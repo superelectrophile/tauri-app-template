@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import tailwindcss from "@tailwindcss/vite";
+import svgr from "vite-plugin-svgr";
 
 const host = process.env.TAURI_DEV_HOST;
 
@@ -14,11 +15,13 @@ export default defineConfig(async () => ({
     }),
     react(),
     tailwindcss(),
+    svgr(),
   ],
 
   // See https://stackoverflow.com/questions/67194082/how-can-i-display-the-current-app-version-from-package-json-to-the-user-using-vi
   define: {
     __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
+    __APP_NAME__: JSON.stringify(process.env.npm_package_name),
   },
 
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`

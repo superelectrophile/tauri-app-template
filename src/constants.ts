@@ -1,0 +1,10 @@
+export const DESIGN_CONSTANTS = {
+  DURATION: {
+    DEFAULT_TRANSITION: 250,
+    DEFAULT_DEBOUNCE_TIME_MS: 200,
+  } as const,
+  DIMENSION: {
+    MIN_TICK_SEPARATOR_WIDTH_PX: 36,
+    MIN_TICK_SEPARATOR_HEIGHT_PX: 36,
+  } as const,
+} as const;
