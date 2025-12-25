@@ -3,6 +3,8 @@ import { getAppDataDir } from "../api";
 import { useState, useEffect, useContext } from "react";
 import { Button } from "../components/Button";
 import { SettingsContext } from "../SettingsContext";
+import SearchIcon from "../assets/search.svg?react";
+import { openDir } from "../api";
 
 export const Route = createFileRoute("/settings")({
   component: RouteComponent,
@@ -21,7 +23,7 @@ function RouteComponent() {
   return (
     <div className="flex flex-col gap-4 p-4">
       <h1 className="text-xl font-bold">Settings</h1>
-      <div className="grid grid-cols-[120px_1fr] gap-4">
+      <div className="grid grid-cols-[120px_1fr_64px] gap-4">
         <p className="text-sm color-hint text-right p-2">Color Theme</p>
         <div className="flex flex-row gap-2">
           <Button
@@ -45,15 +47,27 @@ function RouteComponent() {
         </div>
       </div>
       <h1 className="text-xl font-bold">Dev</h1>
-      <div className="grid grid-cols-[120px_1fr] gap-4">
+      <div className="grid grid-cols-[120px_1fr_64px] gap-4">
         <p className="text-sm color-hint text-right p-2">Version</p>
         <code className="text-text bg-bg-light p-1 rounded-md">
           {__APP_VERSION__}
         </code>
+        <div />
         <p className="text-sm color-hint text-right p-2">App Data Directory</p>
         <code className="text-text bg-bg-light p-1 rounded-md">
           {appDataDirectory}
         </code>
+        <div className="flex items-center justify-center">
+          <Button
+            onClick={() => {
+              if (appDataDirectory) {
+                openDir(appDataDirectory);
+              }
+            }}
+          >
+            <SearchIcon className="w-6 h-6" />
+          </Button>
+        </div>
       </div>
     </div>
   );

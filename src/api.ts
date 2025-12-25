@@ -5,6 +5,10 @@ export async function getAppDataDir() {
   return await appDataDir();
 }
 
+export async function openDir(path: string) {
+  return await invoke<void>("open_dir", { path });
+}
+
 type RustSettings = {
   color_theme: "Light" | "Dark" | "System";
 };
