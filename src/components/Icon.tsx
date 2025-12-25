@@ -12,7 +12,7 @@ export function Icon({ icon: IconComponent, className, active }: IconProps) {
     <IconComponent
       className={clsx(
         "w-8 h-8 p-1 transition-colors duration-(--duration-default-transition)  rounded-md hover:text-text hover:bg-hint bg-transparent",
-        active ? "text-text" : "text-hint",
+        active ? "text-text" : "text-text-hint",
         className
       )}
     />

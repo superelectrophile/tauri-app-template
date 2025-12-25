@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 :root {
   font-size: 16px;
   font-weight: 400;
@@ -9,27 +10,52 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  color-scheme: light dark;
-
   --font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  --color-text: #0f0f0f;
-  --color-bg: #f4f4f4;
-  --color-hint: #00000066;
-  --color-bg-light: #fafafa;
-
   --duration-default-transition: 250ms;
 
   font-family: var(--font-family);
   color: var(--color-text);
   background-color: var(--color-bg);
+
+  /* Default: light theme */
+  --color-text: #0f0f0f;
+  --color-bg: #f0f0f0;
+  --color-hint: #00000022;
+  --color-text-hint: #00000066;
+  --color-bg-light: #fafafa;
+  color-scheme: light;
 }
+
+/* System preference: dark (when no forced class) */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light):not(.dark) {
     --color-text: #f6f6f6;
     --color-bg: #2f2f2f;
     --color-bg-light: #3f3f3f;
-    --color-hint: #ffffff66;
+    --color-hint: #ffffff22;
+    --color-text-hint: #ffffff66;
+    color-scheme: dark;
   }
+}
+
+/* Forced light mode */
+:root.light {
+  --color-text: #0f0f0f;
+  --color-bg: #f0f0f0;
+  --color-hint: #00000022;
+  --color-bg-light: #fafafa;
+  --color-text-hint: #00000066;
+  color-scheme: light;
+}
+
+/* Forced dark mode */
+:root.dark {
+  --color-text: #f6f6f6;
+  --color-bg: #2f2f2f;
+  --color-bg-light: #3f3f3f;
+  --color-hint: #ffffff22;
+  --color-text-hint: #ffffff66;
+  color-scheme: dark;
 }
 
 @theme {
@@ -37,6 +63,7 @@
   --color-bg: var(--color-bg);
   --color-bg-light: var(--color-bg-light);
   --color-hint: var(--color-hint);
+  --color-text-hint: var(--color-text-hint);
 }
 
 body {
